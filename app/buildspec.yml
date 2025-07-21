@@ -1,0 +1,14 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - cd app
+      - npm install
+  build:
+    commands:
+      - npm run build
+      - cd ..
+artifacts:
+  files:
+    - app/**/*
