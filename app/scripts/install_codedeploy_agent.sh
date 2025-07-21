@@ -6,3 +6,6 @@ wget https://aws-codedeploy-us-east-1.s3.us-east-1.amazonaws.com/latest/install
 chmod +x ./install
 sudo ./install auto
 sudo service codedeploy-agent start
+sudo yum install httpd -y
+sudo systemctl enable httpd
+sudo systemctl start httpd
