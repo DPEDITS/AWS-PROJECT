@@ -1,0 +1,13 @@
+version: 0.0
+os: linux
+
+files:
+  - source: app/dist/
+    destination: /var/www/html/
+    overwrite: yes
+
+hooks:
+  AfterInstall:
+    - location: app/scripts/start_server.sh
+      timeout: 300
+      runas: root
