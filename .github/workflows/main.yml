@@ -1,0 +1,24 @@
+name: Manually Trigger AWS CodePipeline
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  start-codepipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::194644528937:role/GitHubActionsTriggerPipelineRole
+          aws-region: us-east-1
+
+      - name: Start AWS CodePipeline Execution
+        run: |
+          aws codepipeline start-pipeline-execution --name my-portfolio-pipeline
