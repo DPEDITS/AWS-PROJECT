@@ -1,4 +1,4 @@
-name: Deploy with Terraform and Trigger AWS CodePipeline
+name: Manually Trigger AWS CodePipeline
 
 on:
   push:
@@ -10,35 +10,15 @@ permissions:
   contents: read
 
 jobs:
-  deploy-and-trigger:
+  start-codepipeline:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          submodules: recursive
-      - name: Debug – List folders
-        run: ls -R .
-
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::194644528937:role/GitHubActionsTriggerPipelineRoles
           aws-region: us-east-1
 
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-        with:
-          terraform_version: 1.6.6
-
-      - name: Terraform Init
-        run: terraform init
-        working-directory: terraform
-
-      - name: Terraform Apply (Auto-approve)
-        run: terraform apply -auto-approve
-        working-directory: terraform
-
       - name: Start AWS CodePipeline Execution
-        run: aws codepipeline start-pipeline-execution --name my-portfolio-pipeline
+        run: |
+          aws codepipeline start-pipeline-execution --name my-portfolio-pipeline
