@@ -8,7 +8,10 @@ phases:
   build:
     commands:
       - npm run build
+      - ls -l
+      - ls -l dist
       - cd ..
 artifacts:
   files:
+    - appspec.yml
     - app/**/*
