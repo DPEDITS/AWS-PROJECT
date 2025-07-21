@@ -17,8 +17,8 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: List files to confirm structure (Debug)
-        run: ls -R
+      - name: Debug – List folders
+        run: ls -R .
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
