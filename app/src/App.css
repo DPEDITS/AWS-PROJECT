@@ -229,6 +229,10 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:before {
 nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 	border-color: transparent;
 }
+.navbar-logo {
+  width: 80px;
+  height: auto;
+}
 
 /************ Banner Css ************/
 .banner {
